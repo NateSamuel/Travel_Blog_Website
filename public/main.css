@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Newsreader');
+@import url('https://fonts.googleapis.com/css?family=Overpass');
+/* 
+@desc Student wrote this full page authorMode.js
+*/
+/* 
+Define styles 
+*/
+
+#headerHomePage {
+    overflow: visible;
+    padding: 10px;
+    background: #eae7e5;
+    text-align: center;
+    width: 100%;
+}
+#modeLinks {
+    overflow: visible;
+    padding: 10px;
+    background: #c5bfbb;
+    text-align: center;
+    width: 100%;
+}
+#listBox{
+    overflow: visible;
+    background: #f3eae5;
+    place-items: center;
+    text-align: center;
+    display: inline-block;
+    position:relative;
+    margin: auto;
+    width: 30%;
+    padding: 30px;
+}
+#listBoxArticle{
+    overflow: visible;
+    background: #f3eae5;
+    place-items: center;
+    text-align: center;
+    margin: auto;
+    width: 30%;
+    padding: 30px;
+}
+#buttonBox{
+    overflow: visible;
+    place-items: center;
+    text-align: center;
+    display: inline-block;
+    position:relative;
+    margin: auto;
+    width: 10%;
+    padding: 30px;
+}
+#buttonBoxArticle{
+    overflow: visible;
+    place-items: center;
+    text-align: center;
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+}
+h1 {
+    font-family: Newsreader, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 30px;
+    
+}
+h2 {
+    font-family: Newsreader, Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 23px;
+    color: black;
+}
+h3 {
+    font-family: Newsreader, Arial, Helvetica, sans-serif;
+    line-height: 1em;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+}
+p {
+    font-family: Overpass, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+}
+a:link {
+    display: inline;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-family: Newsreader, Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 18px;
+}
+
+a:visited { 
+    text-align: center;
+    text-decoration: none;
+    font-family: Newsreader, Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 18px;
+}
+
+a:hover { 
+    text-align: center;
+    text-decoration: none;
+    font-family: Newsreader, Arial, Helvetica, sans-serif;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+ul{
+    list-style-type: none;
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+    background-color: #d6c6a5;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-family: Newsreader, Arial, Helvetica, sans-serif;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 20px;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #d6c6a5;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-family: Newsreader, Arial, Helvetica, sans-serif;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+input[type=text] {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+#changeURL {
+    margin: auto;
+    font-weight: bold;
+    width: 10%;
+    padding: 10px;
+}

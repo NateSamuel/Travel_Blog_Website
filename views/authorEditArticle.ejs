@@ -1,0 +1,73 @@
+<!--Author - Edit Article Page:
+This is where the author writes, amends and publishes individual articles.
+/**
+ * @desc Student wrote this full page authorEditArticle.ejs
+ */
+-->
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"  type="text/css" href="/main.css" />
+        <title>This is the author edit article page of the blog.</title>
+    </head>
+    <body>
+        <header>
+            <div id="headerHomePage">
+            <!--Photo by gya den: https://www.pexels.com/photo/van-parked-beside-the-road-near-handrail-and-ocean-2303781/-->
+            <img src="/assets/backgroundImage.jpg" style="width:30%">
+                <h1> The Traveler's Rucksack </h1>
+                <p>A Travel Inspiration Blog</p>
+            </div>
+        <hr>
+        <h2> Author Edit Article Page </h2>
+        <div id = changeURL>
+            <a href=/author>Back To Author Home Page</a>
+        </div>
+        </header>
+
+        <% if (isNew === false) { %>
+            <% articleTable.forEach(function(blogPostData){ %>
+                <div id = listBoxArticle>
+                    <ul>
+                        <li><h3>Blog Post Title</h3></li>
+                        <li><%= blogPostData.blog_title %></li>
+                        <li><h3>Author Name</h3></li>
+                        <li><%= blogPostData.author_name %></li>
+                        <li><h3>Time Created</h3></li>
+                        <li><%= blogPostData.time_created %></li>
+                        <li><h3>Time Published</h3></li>
+                        <li><%= blogPostData.time_published %></li>
+                        <li><h3>Time Modified</h3></li>
+                        <li><%= blogPostData.time_modified %></li>
+                        <li><h3>Number Of Reads</h3></li>
+                        <li><%= blogPostData.number_of_reads %></li>
+                        <li><h3>Number Of Likes</h3></li>
+                        <li><%= blogPostData.number_of_likes %></li>
+                    </ul>
+                </div>
+                <div id=buttonBoxArticle>
+                    <ul>
+                        <form method="POST" action="/author/edit/updated">
+                            <input id="name" type="hidden" name="name" value="<%=blogPostData.blog_id %>" />
+                            <input id="boolean" type="hidden" name="boolean" value="<%=isPublished %>" />
+                            <input id="title" type="text" name="title" value="<%= blogPostData.blog_title %>" required />
+                            <input id="articleText" type="text" name="articleText" value="<%= blogPostData.blog_text %>" required />
+                            <input type="submit" value="submit" />
+                        </form>
+                    </ul>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <div id=buttonBoxArticle>
+                <form method="POST" action="/author/edit/created">
+                    <input id="title" type="text" name="title" value="Insert Title Here." required />
+                    <input id="author" type="text" name="author" value="Insert Author Name Here." required />
+                    <input id="articleText" type="text" name="articleText" value="Insert Article Text Here." required />
+                    <input type="submit" value="submit" />
+                </form>
+            </div>
+        <% } %>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<!--Reader - Article Page:
+This is where the reader can read and interact with individual articles. 
+/**
+ * @desc Student wrote this full page readerArticlePage.js
+ */
+-->
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"  type="text/css" href="/main.css" />
+        <title>This is the reader article page of the blog.</title>
+    </head>
+    <body>
+        <header>
+            <!-- Header graphics-->
+            <div id="headerHomePage">
+            <!--Photo by gya den: https://www.pexels.com/photo/van-parked-beside-the-road-near-handrail-and-ocean-2303781/-->
+            <img src="/assets/backgroundImage.jpg" style="width:30%">
+                <h1> The Traveler's Rucksack </h1>
+                <p>A Travel Inspiration Blog</p>
+            </div>
+        <hr>
+        <h2> Reader Article Page </h2>
+        <!-- links to return to reader homepage-->
+        <div id = changeURL>
+            <a href=/reader>Back To Reader Home Page</a>
+        </div>
+        </header>
+        <!-- chosen article information-->
+        <% articleTable.forEach(function(blogPostData){ %>
+            <div id = listBoxArticle>
+                <ul>
+                    <li><h3>Blog Title</h3></li>
+                    <br>
+                    <li><%= blogPostData.blog_title %> </li>
+                    <br>
+                    <li><h3>Author Name</h3></li>
+                    <br>
+                    <li><%= blogPostData.author_name %></li>
+                    <hr>
+                    <br>
+                    <li><p>Published Date</p></li>
+                    <br>
+                    <li><%= blogPostData.time_published %></li>
+                    <hr>
+                    <br>
+                    <li><h3>Article:</h3></li>
+                    <br>
+                    <li><%= blogPostData.blog_text %></li>
+                </ul>
+            </div>
+            <hr>
+            <br>
+            <p> current likes at <%= blogPostData.number_of_likes %> </p>
+            <p> current views at <%= blogPostData.number_of_reads %> </p>
+            <!-- form submitted to add a like-->
+            <div id=buttonBoxArticle>
+                <form method="POST" action="/reader/article/liked">
+                    <input id="name" type="hidden" name="name" value="<%= id %>" />
+                    <input id="addLike" type="hidden" name="addLike" value="<%= blogPostData.number_of_likes %>" />
+                    <input type="submit" value="+ 1 like" />
+                </form>
+            </div>
+        <% }) %>
+        <!-- comments and add new comment form-->
+        <div id=buttonBoxArticle>
+            <form method="POST" action="/reader/article/commented">
+                <input id="name" type="hidden" name="name" value="<%= id %>" />
+                <input id="commentText" type="text" name="commentText" value=" Insert Comment Here." required />
+                <input id="authorName" type="text" name="authorName" value=" Insert Name Here." required />
+                <input type="submit" value="submit" />
+            </form>
+            <% const reversedArray = commentsTable.reverse(); %>
+            <% reversedArray.forEach(function(commentData){ %>
+                <ul>
+                    <li><%= commentData.comment_text %> </li>
+                    <li><%= commentData.time_published %> </li>
+                    <li><%= commentData.author_name %> </li>
+                </ul>
+            <% }) %>
+        </div>
+    </body>
+</html>
+

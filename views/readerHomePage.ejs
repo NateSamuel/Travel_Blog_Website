@@ -1,0 +1,56 @@
+<!--Reader - Home Page:
+This is the front page which readers use to access the blog site.
+/**
+ * @desc Student wrote this full page readerArticlePage.js
+ */
+-->
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"  type="text/css" href="/main.css" />
+        <title>This is the reader home page of the blog.</title>
+    </head>
+    <body>
+        <header>
+            <!-- Header graphics-->
+            <div id="headerHomePage">
+            <!--Photo by gya den: https://www.pexels.com/photo/van-parked-beside-the-road-near-handrail-and-ocean-2303781/-->
+            <img src="/assets/backgroundImage.jpg" style="width:30%">
+                <h1> The Traveler's Rucksack </h1>
+                <p>A Travel Inspiration Blog</p>
+            </div>
+        <hr>
+        <h2> Reader Homepage </h2>
+        </header>
+        <!-- all current published articles listed-->
+        <h2> Articles </h2>
+        <% const reversedArray = articleTable.reverse(); %>
+        <% reversedArray.forEach(function(blogPostData){ %>
+            <form method="POST" action="/reader/article">
+                <div id = listBoxArticle>
+                    <ul>
+                        <li><h3>Blog Title</h3></li>
+                        <br>
+                        <li><%= blogPostData.blog_title %> </li>
+                        <br>
+                        <li><h3>Author Name</h3></li>
+                        <br>
+                        <li><%= blogPostData.author_name %></li>
+                        <hr>
+                        <br>
+                        <li><p>Published Date</p></li>
+                        <br>
+                        <li><%= blogPostData.time_published %></li>
+                    </ul>
+                    <input id="name" type="hidden" name="name" value="<%=blogPostData.blog_id %>" />
+                    <input id="viewerCount" type="hidden" name="viewerCount" value="<%=blogPostData.number_of_reads %>" />
+                    <input type="submit" value="click for article" />
+                </div>
+            </form>
+            <br>
+        <% }) %>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!--Author - Settings Page:
+This is where the Author can change the blog title and author name.
+/**
+ * @desc Student wrote this full page authorSettingsPage.ejs
+ */
+-->
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"  type="text/css" href="/main.css" />
+        <title>This is the author settings page of the blog.</title>
+    </head>
+    <body>
+        <header>
+            <!-- Header graphics-->
+            <div id="headerHomePage">
+            <!--Photo by gya den: https://www.pexels.com/photo/van-parked-beside-the-road-near-handrail-and-ocean-2303781/-->
+            <img src="/assets/backgroundImage.jpg" style="width:30%">
+                <h1> The Traveler's Rucksack </h1>
+                <p>A Travel Inspiration Blog</p>
+            </div>
+        <hr>
+        <!-- Button to go back to author home page-->
+        <h2> Author Settings Page </h2>
+        <div id = changeURL>
+            <a href=/author>Back To Author Home Page</a>
+        </div>
+        </header>
+        <!-- form to change title and author-->
+        <% articleTable.forEach(function(blogPostData){ %>
+            <div id = listBoxArticle>
+                <ul>
+                    <form method="POST" action="/author/settings/updated">
+                        <input id="name" type="hidden" name="name" value="<%=blogPostData.blog_id %>" />
+                        <input id="boolean" type="hidden" name="boolean" value="<%=isPublished %>" />
+                        <input id="title" type="text" name="title" value="<%= blogPostData.blog_title %>" required />
+                        <input id="author" type="text" name="author" value="<%= blogPostData.author_name %>" required />
+                        <input type="submit" value="submit" />
+                    </form>
+                </ul>
+            </div>
+        <% }) %>
+    </body>
+</html>

@@ -1,0 +1,118 @@
+<!--Author - Home Page:
+This is where the Author can create, review and edit articles.
+/**
+ * @desc Student wrote this full page authorHomePage.ejs
+ */
+-->
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"  type="text/css" href="/main.css" />
+        <title>This is the author home page of the blog.</title>
+    </head>
+    <body>
+        <header>
+            <!-- Header graphics-->
+            <div id="headerHomePage">
+            <!--Photo by gya den: https://www.pexels.com/photo/van-parked-beside-the-road-near-handrail-and-ocean-2303781/-->
+            <img src="/assets/backgroundImage.jpg" style="width:30%">
+                <h1> The Traveler's Rucksack </h1>
+                <p>A Travel Inspiration Blog</p>
+            </div>
+        <hr>
+        <!-- Subtitle-->
+        <h2> Author Homepage </h2>
+        </header>
+        <!-- Creates new draft article-->
+        <div id = changeURL>
+            <form method="GET" action="/author/edit">
+                <input type="submit" value="Create Draft Article" />
+            </form>
+        </div>
+        <!-- Information of all draft articles-->
+        <h2> Draft Articles </h2>
+        <% draftTable.forEach(function(blogPostData){ %>
+            <div id = listBox>
+                <ul>
+                    <li><h3>Blog Post Title</h3></li>
+                    <li><%= blogPostData.blog_title %></li>
+                    <li><h3>Author Name</h3></li>
+                    <li><%= blogPostData.author_name %></li>
+                    <li><h3>Time Created</h3></li>
+                    <li><%= blogPostData.time_created %></li>
+                    <li><h3>Time Published</h3></li>
+                    <li><%= blogPostData.time_published %></li>
+                    <li><h3>Time Modified</h3></li>
+                    <li><%= blogPostData.time_modified %></li>
+                    <li><h3>Number Of Reads</h3></li>
+                    <li><%= blogPostData.number_of_reads %></li>
+                    <li><h3>Number Of Likes</h3></li>
+                    <li><%= blogPostData.number_of_likes %></li>
+                </ul>
+            </div>
+            <!-- Buttons to delete, edit, settings,publish-->
+            <div id = buttonBox>
+                <form method="POST" action="/author/delete/draft">
+                    <input id="delete" type="hidden" name="delete" value="<%=blogPostData.blog_id %>" />
+                    <input type="submit" value="delete" />
+                </form>
+                <form method="POST" action="/author/edit/draft">
+                    <input id="edit" type="hidden" name="edit" value="<%=blogPostData.blog_id %>" />
+                    <input type="submit" value="edit" />
+                </form>
+                <form method="POST" action="/author/settings/draft">
+                    <input id="settings" type="hidden" name="settings" value="<%=blogPostData.blog_id %>" />
+                    <input type="submit" value="settings" />
+                </form>
+                <form method="POST" action="/author/publish">
+                    <input id="publish" type="hidden" name="publish" value="<%=blogPostData.blog_id %>" />
+                    <input type="submit" value="publish" />
+                </form>
+            </div>
+        <% }) %>
+        <!-- Information of all published articles-->
+        <h2> Published Articles </h2>
+        <% articleTable.forEach(function(blogPostData){ %>
+            <div id = listBox>
+                <ul>
+                    <li><h3>Blog Post Title</h3></li>
+                    <li><%= blogPostData.blog_title %></li>
+                    <li><h3>Author Name</h3></li>
+                    <li><%= blogPostData.author_name %></li>
+                    <li><h3>Time Created</h3></li>
+                    <li><%= blogPostData.time_created %></li>
+                    <li><h3>Time Published</h3></li>
+                    <li><%= blogPostData.time_published %></li>
+                    <li><h3>Time Modified</h3></li>
+                    <li><%= blogPostData.time_modified %></li>
+                    <li><h3>Number Of Reads</h3></li>
+                    <li><%= blogPostData.number_of_reads %></li>
+                    <li><h3>Number Of Likes</h3></li>
+                    <li><%= blogPostData.number_of_likes %></li>
+                </ul>
+            </div>
+            <!-- Buttons to delete, edit, settings, read article-->
+            <div id = buttonBox>
+                <form method="POST" action="/author/delete/published">
+                    <input id="delete" type="hidden" name="delete" value="<%=blogPostData.blog_id %>" />
+                    <input type="submit" value="delete" />
+                </form>
+                <form method="POST" action="/author/edit/published">
+                    <input id="edit" type="hidden" name="edit" value="<%=blogPostData.blog_id %>" />
+                    <input type="submit" value="edit" />
+                </form>
+                <form method="POST" action="/author/settings/published">
+                    <input id="settings" type="hidden" name="settings" value="<%=blogPostData.blog_id %>" />
+                    <input type="submit" value="settings" />
+                </form>
+                <form method="POST" action="/reader/article">
+                    <input id="name" type="hidden" name="name" value="<%=blogPostData.blog_id %>" />
+                    <input id="viewerCount" type="hidden" name="viewerCount" value="<%=blogPostData.number_of_reads %>" />
+                    <input type="submit" value="article" />
+                </form>
+            </div>
+        <% }) %>
+    </body>
+</html>
